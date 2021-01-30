@@ -5,31 +5,43 @@ using Mirror;
 
 public class PlayerController : NetworkBehaviour
 {
-
-    public float moveVelocity;
-    private Rigidbody rigidBody;
-    private float horizontalInput;
-    private float verticalInput;
+    public float Speed;
+    private Rigidbody RigidBody;
+    private Vector2 Direction;
 
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        if (isLocalPlayer)
+        {
+            Camera.main.GetComponent<SmoothCameraFollow>().Target = transform;
+        }
+
+        RigidBody = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate() 
+    private void Update()
+    {
+        Direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+
+    private void FixedUpdate()
     {
         HandleMovement();
     }
 
     void HandleMovement()
     {
+        if (Direction.Equals(Vector2.zero))
+        {
+            RigidBody.velocity = Vector3.zero;
+        }
+
         if (!isLocalPlayer)
         {
             return;
         }
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        rigidBody.velocity = (Vector3.right * horizontalInput + Vector3.forward * verticalInput) * moveVelocity * Time.fixedDeltaTime;
+        var direction = (Vector3.right * Direction.x + Vector3.forward * Direction.y).normalized;
+        RigidBody.velocity = direction * Speed * Time.deltaTime;
     }
 }
