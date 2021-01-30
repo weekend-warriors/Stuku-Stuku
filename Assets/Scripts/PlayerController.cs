@@ -29,7 +29,10 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (isLocalPlayer)
+        {
+            HandleMovement();
+        }
     }
 
     [ClientRpc]
@@ -51,11 +54,6 @@ public class PlayerController : NetworkBehaviour
         if (isStopped)
         {
             RigidBody.velocity = Vector3.zero;
-        }
-
-        if (!isLocalPlayer)
-        {
-            return;
         }
 
         Animator.SetBool("IsWalking", !isStopped);
