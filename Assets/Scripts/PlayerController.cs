@@ -6,6 +6,7 @@ using Mirror;
 public class PlayerController : NetworkBehaviour
 {
     public float Speed;
+    public float RotationSpeed;
     private Rigidbody RigidBody;
     private Vector2 Direction;
 
@@ -31,6 +32,7 @@ public class PlayerController : NetworkBehaviour
 
     void HandleMovement()
     {
+        // TODO: there is a bug here
         if (Direction.Equals(Vector2.zero))
         {
             RigidBody.velocity = Vector3.zero;
@@ -42,10 +44,10 @@ public class PlayerController : NetworkBehaviour
         }
 
         var direction = (Vector3.right * Direction.x + Vector3.forward * Direction.y).normalized;
-        RigidBody.velocity = direction * Speed * Time.deltaTime;
+        RigidBody.velocity = direction * Speed * Time.fixedDeltaTime;
 
         if (direction.magnitude >= 0.1) {
-            RigidBody.rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.fixedDeltaTime * RotationSpeed);
         }
     }
 }
