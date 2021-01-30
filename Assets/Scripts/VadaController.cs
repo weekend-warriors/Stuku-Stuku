@@ -15,14 +15,21 @@ public class VadaController : NetworkBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        foreach(GameObject obj in PaintedParts)
-        {
-            obj.GetComponent<Renderer>().material = VadaColor;
-        }
+
+        ColorizeSelf();
 
         if (isLocalPlayer)
         {
             StartCoroutine(Deblind(BlindPeriod));
+        }
+    }
+
+    [ClientRpc]
+    void ColorizeSelf()
+    {
+        foreach (GameObject obj in PaintedParts)
+        {
+            obj.GetComponent<Renderer>().material = VadaColor;
         }
     }
 
