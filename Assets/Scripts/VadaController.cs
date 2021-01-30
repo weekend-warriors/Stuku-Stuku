@@ -10,14 +10,14 @@ public class VadaController : NetworkBehaviour
     private bool isBlind = true;
     public float BlindPeriod;
     private PlayerController playerController;
-    private List<GameObject> TaggedRunners;
+    public List<GameObject> TaggedRunners;
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
         foreach(GameObject obj in PaintedParts)
         {
-            obj.GetComponent<MeshRenderer>().material = VadaColor;
+            obj.GetComponent<Renderer>().material = VadaColor;
         }
 
         if (isLocalPlayer)
@@ -48,11 +48,11 @@ public class VadaController : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isBlind && other.CompareTag("FlagName")) // Need to tag flag
+        if (!isBlind && other.CompareTag("DropPoint")) 
         {
-            for(int i = TaggedRunners.Count; i >= 0; i--)
+            for(int i = TaggedRunners.Count-1; i >= 0; i--)
             {
-                // Stuck player i
+                TaggedRunners[i].GetComponent<RunnerController>().GetStucked();
                 TaggedRunners.RemoveAt(i);
             }
         }
