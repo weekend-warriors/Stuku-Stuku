@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidBody;
     private float horizontalInput;
     private float verticalInput;
+    private Vector3 moveDirection;
 
     void Start()
     {
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        rigidBody.velocity = (Vector3.right * horizontalInput + Vector3.forward * verticalInput) * moveVelocity * Time.fixedDeltaTime;
+        moveDirection = (Vector3.right * horizontalInput + Vector3.forward * verticalInput).normalized;
+        rigidBody.velocity = moveDirection * moveVelocity * Time.fixedDeltaTime;
+        if (moveDirection.magnitude >= 0.1)
+            transform.rotation = Quaternion.LookRotation(moveDirection);
     }
 }
