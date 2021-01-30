@@ -32,6 +32,18 @@ public class PlayerController : NetworkBehaviour
         HandleMovement();
     }
 
+    [ClientRpc]
+    public void BecomeRunner()
+    {
+        GetComponent<RunnerController>().enabled = true;
+    }
+
+    [ClientRpc]
+    public void BecomeVada()
+    {
+        GetComponent<VadaController>().enabled = true;
+    }
+
     void HandleMovement()
     {
         // TODO: there is a bug here
