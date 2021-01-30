@@ -43,5 +43,9 @@ public class PlayerController : NetworkBehaviour
 
         var direction = (Vector3.right * Direction.x + Vector3.forward * Direction.y).normalized;
         RigidBody.velocity = direction * Speed * Time.deltaTime;
+
+        if (direction.magnitude >= 0.1) {
+            RigidBody.rotation = Quaternion.LookRotation(direction);
+        }
     }
 }
