@@ -1,20 +1,32 @@
 fileFormatVersion: 2
-guid: dd841e314d2cc44aa8cece0ff273983a
+guid: 8e0b05b7e9a8c41bea6f70da4d1a4004
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: 2667949614841947897
-    second: Walk
+      74: 1127220009584751587
+    second: FlagWave
   - first:
-      74: -8945691123924629249
-    second: Armature|Idle
+      74: -1839503896736933090
+    second: FlagWave|Cube.034Action
   - first:
-      74: 8349542763059015795
-    second: Armature|Walk
+      74: 4128826736129690796
+    second: FlagWave|Cube.035Action
   - first:
-      74: 3800721468275536773
-    second: Armature|Walk (1)
+      74: -3677414376755652353
+    second: FlagWave|Cube.036Action
+  - first:
+      74: -3059831187925581660
+    second: FlagWave|Flag
+  - first:
+      74: 5364602621891648086
+    second: FlagWave|FlagWave
+  - first:
+      74: -3999578356269874737
+    second: Cube|CubeAction
+  - first:
+      74: 8381017860398852306
+    second: Cube|FlagWave
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -44,40 +56,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Idle
-      takeName: Armature|Idle
+      name: FlagWave
+      takeName: FlagWave
       internalID: 0
       firstFrame: 0
-      lastFrame: 20
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Walk
-      takeName: Armature|Walk
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 20
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -110,7 +93,7 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
-    importBlendShapes: 0
+    importBlendShapes: 1
     importCameras: 1
     importLights: 1
     fileIdsGeneration: 2
