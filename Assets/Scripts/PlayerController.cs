@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
         rigidBody.velocity = (Vector3.right * horizontalInput + Vector3.forward * verticalInput) * moveVelocity * Time.fixedDeltaTime;
     }
 }

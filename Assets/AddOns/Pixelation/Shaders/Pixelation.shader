@@ -21,7 +21,7 @@
 			fixed4 frag (v2f_img i) : SV_Target
 			{
 				float2 blockPos = floor(i.uv * BlockCount);
-				float2 blockCenter = blockPos * BlockSize + BlockSize * 0.5;
+				float2 blockCenter = blockPos * BlockSize;
 
 				float4 tex = tex2D(_MainTex, blockCenter);
 				return tex;
