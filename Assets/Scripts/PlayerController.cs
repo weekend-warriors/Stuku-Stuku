@@ -33,7 +33,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void BecomeRunner()
+    public void BecomeRunner(int index)
     {
         GetComponent<RunnerController>().enabled = true;
     }

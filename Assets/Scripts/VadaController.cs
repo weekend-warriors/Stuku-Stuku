@@ -24,7 +24,7 @@ public class VadaController : NetworkBehaviour
         }
     }
 
-    [ClientRpc]
+    //[ClientRpc]
     void ColorizeSelf()
     {
         foreach (GameObject obj in PaintedParts)
