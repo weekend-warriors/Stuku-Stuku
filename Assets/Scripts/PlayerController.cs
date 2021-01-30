@@ -29,7 +29,22 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (isLocalPlayer)
+        {
+            HandleMovement();
+        }
+    }
+
+    [ClientRpc]
+    public void BecomeRunner(int index)
+    {
+        GetComponent<RunnerController>().enabled = true;
+    }
+
+    [ClientRpc]
+    public void BecomeVada()
+    {
+        GetComponent<VadaController>().enabled = true;
     }
 
     void HandleMovement()
@@ -39,11 +54,6 @@ public class PlayerController : NetworkBehaviour
         if (isStopped)
         {
             RigidBody.velocity = Vector3.zero;
-        }
-
-        if (!isLocalPlayer)
-        {
-            return;
         }
 
         Animator.SetBool("IsWalking", !isStopped);

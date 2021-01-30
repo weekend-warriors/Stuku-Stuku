@@ -30,7 +30,8 @@ public class RunnerController : NetworkBehaviour
         if (other.CompareTag("DropPoint"))
         {
             IsWon = true;
-            RunnerWin();
+            if (isLocalPlayer)
+                RunnerWin();
             // This bricks the game
             //gameObject.layer = LayerMask.NameToLayer("ExitedPlayer");
             Outline.enabled = true;
@@ -41,6 +42,30 @@ public class RunnerController : NetworkBehaviour
             }
         }
     }
+
+    public void GetStucked()
+    {
+        RunnerLose();
+    }
+
+    [Command(ignoreAuthority = true)]
+    void RunnerLose()
+    {
+        OutlineCharacter();
+    }
+
+    [ClientRpc]
+    void OutlineCharacter()
+    {
+        Outline.enabled = true;
+
+        foreach (var renderer in Renderer)
+        {
+            renderer.material.shader = TransparentShader;
+        }
+    }
+
+    
 
     [Command]
     void RunnerWin()
