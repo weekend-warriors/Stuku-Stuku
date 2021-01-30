@@ -3,6 +3,7 @@
     Properties
     {
         _TextureMap ("Texture", 2D) = "" {}
+        _ShadowColor ("Shadow Color", Color) = (0.0, 0.0, 0.0, 1.0)
     }
     SubShader
     {
@@ -16,6 +17,7 @@
             #include "AutoLight.cginc"
            
             sampler2D _TextureMap;
+            float4 _ShadowColor;
  
             struct SHADERDATA
             {
@@ -41,7 +43,7 @@
  
             float4 PSMain (SHADERDATA ps) : SV_TARGET
             {
-                return lerp(float4(0,0,0,1), tex2D(_TextureMap, ps.uv), step(0.5, SHADOW_ATTENUATION(ps)));
+                return lerp(_ShadowColor, tex2D(_TextureMap, ps.uv), step(0.5, SHADOW_ATTENUATION(ps)));
             }
            
             ENDCG
