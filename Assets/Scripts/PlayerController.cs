@@ -41,12 +41,12 @@ public class PlayerController : NetworkBehaviour
             RigidBody.velocity = Vector3.zero;
         }
 
-        Animator.SetBool("IsWalking", !isStopped);
-
         if (!isLocalPlayer)
         {
             return;
         }
+
+        Animator.SetBool("IsWalking", !isStopped);
 
         var direction = (Vector3.right * Direction.x + Vector3.forward * Direction.y).normalized;
         var gravity = new Vector3(0, RigidBody.velocity.y);
