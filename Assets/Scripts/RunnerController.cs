@@ -9,15 +9,14 @@ public class RunnerController : NetworkBehaviour
     public List<Renderer> Renderer;
     public Shader TransparentShader;
     private bool IsWon = false;
+    public List<Material> Materials;
 
-    void Start()
+    public void ColorizeSelf(int index)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        foreach (var renderer in Renderer)
+        {
+            renderer.material = Materials[index];
+        }
     }
 
     private void OnTriggerEnter(Collider other)

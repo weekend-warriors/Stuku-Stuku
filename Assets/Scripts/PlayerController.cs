@@ -41,6 +41,7 @@ public class PlayerController : NetworkBehaviour
     public void BecomeRunner(int index)
     {
         GetComponent<RunnerController>().enabled = true;
+        GetComponent<RunnerController>().ColorizeSelf(index);
     }
 
     [ClientRpc]

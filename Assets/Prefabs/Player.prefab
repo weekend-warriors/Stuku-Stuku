@@ -5059,6 +5059,11 @@ MonoBehaviour:
   - {fileID: 4396696366522098791}
   - {fileID: 9208527187559214242}
   TransparentShader: {fileID: 4800000, guid: c6675dd998d61c34b9a5d533a73105a1, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: fa0f20d16efd14542a9abee8e663287f, type: 2}
+  - {fileID: 2100000, guid: 9943eef418d491a4589f4f77ecf84130, type: 2}
+  - {fileID: 2100000, guid: da0d5431428076c49a6b94bf596f3b06, type: 2}
+  - {fileID: 2100000, guid: d663b1505f4d34e4191bfd7112c70bdf, type: 2}
 --- !u!114 &1912034578505778206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5084,7 +5089,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1984645938883615532}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 537e78f90abd3964988b413177965b2b, type: 3}
+  m_Script: {fileID: 11500000, guid: feb31e3b8cac3ab4aa01aad608094b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
