@@ -8,6 +8,20 @@ using UnityEngine;
 
 class CustomNetworkManager : NetworkManager
 {
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            var hud = GetComponent<NetworkManagerHUD>();
+            hud.enabled = !hud.enabled;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     public override void OnStartServer()
     {
     }

@@ -11,7 +11,7 @@ public class SmoothCameraFollow : MonoBehaviour
 
     private void Start()
     {
-        Offset = camTransform.position - Target.position;
+        Offset = Vector3.Scale(camTransform.position - Target.position, new Vector3(0, 1, 1));
     }
 
     private void LateUpdate()

@@ -11,6 +11,11 @@ public class RunnerController : NetworkBehaviour
     private bool IsWon = false;
     public List<Material> Materials;
 
+    private void Start()
+    {
+        // so we can disable this component
+    }
+
     public void ColorizeSelf(int index)
     {
         foreach (var renderer in Renderer)
@@ -19,25 +24,28 @@ public class RunnerController : NetworkBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (IsWon)
+        if (IsWon || !enabled)
         {
             return;
         }
 
         if (other.CompareTag("DropPoint"))
         {
-            IsWon = true;
-            if (isLocalPlayer)
-                RunnerWin();
-            // This bricks the game
-            //gameObject.layer = LayerMask.NameToLayer("ExitedPlayer");
-            Outline.enabled = true;
-
-            foreach (var renderer in Renderer)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                renderer.material.shader = TransparentShader;
+                IsWon = true;
+                if (isLocalPlayer)
+                    RunnerWin();
+                // This bricks the game
+                //gameObject.layer = LayerMask.NameToLayer("ExitedPlayer");
+                Outline.enabled = true;
+
+                foreach (var renderer in Renderer)
+                {
+                    renderer.material.shader = TransparentShader;
+                }
             }
         }
     }
