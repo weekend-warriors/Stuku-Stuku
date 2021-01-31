@@ -5075,7 +5075,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2100000, guid: d663b1505f4d34e4191bfd7112c70bdf, type: 2}
   LoseColor: {r: 0.9245283, g: 0.20496617, b: 0.23150809, a: 1}
-  WinColor: {r: 0.2494215, g: 0.8962264, b: 0.2494215, a: 0}
+  WinColor: {r: 0.2494215, g: 0.8962264, b: 0.2494215, a: 1}
 --- !u!114 &1912034578505778206
 MonoBehaviour:
   m_ObjectHideFlags: 0
