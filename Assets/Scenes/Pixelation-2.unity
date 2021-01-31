@@ -14757,6 +14757,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 277775358}
     m_Modifications:
+    - target: {fileID: 2622395832729935561, guid: e174c42ddb0f8b948bb146856531fb4f,
+        type: 3}
+      propertyPath: m_Name
+      value: NetworkManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622395832729935564, guid: e174c42ddb0f8b948bb146856531fb4f,
+        type: 3}
+      propertyPath: networkAddress
+      value: 207.154.208.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622395832729935565, guid: e174c42ddb0f8b948bb146856531fb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.0635743
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 58c146b42d2234e42a457f6142dcba72,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -14841,21 +14856,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sphere (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2622395832729935561, guid: e174c42ddb0f8b948bb146856531fb4f,
-        type: 3}
-      propertyPath: m_Name
-      value: NetworkManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2622395832729935564, guid: e174c42ddb0f8b948bb146856531fb4f,
-        type: 3}
-      propertyPath: networkAddress
-      value: 207.154.208.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 2622395832729935565, guid: e174c42ddb0f8b948bb146856531fb4f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.0635743
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c146b42d2234e42a457f6142dcba72, type: 3}
@@ -19104,7 +19104,7 @@ Animator:
   m_GameObject: {fileID: 1991976270}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fe41581628eb94e9fab9db1d518f79e3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7a75e26f0f649fe4ea3db20b7b03b89d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
