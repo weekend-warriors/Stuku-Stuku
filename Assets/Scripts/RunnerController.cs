@@ -7,9 +7,12 @@ public class RunnerController : NetworkBehaviour
 {
     public Outline Outline;
     public List<Renderer> Renderer;
+    public Material TransparentMaterial;
     public Shader TransparentShader;
     private bool IsWon = false;
     public List<Material> Materials;
+    public Color LoseColor;
+    public Color WinColor;
 
     private void Start()
     {
@@ -35,17 +38,7 @@ public class RunnerController : NetworkBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                IsWon = true;
-                if (isLocalPlayer)
-                    RunnerWin();
-                // This bricks the game
-                //gameObject.layer = LayerMask.NameToLayer("ExitedPlayer");
-                Outline.enabled = true;
-
-                foreach (var renderer in Renderer)
-                {
-                    renderer.material.shader = TransparentShader;
-                }
+                RunnerWin();
             }
         }
     }
@@ -53,6 +46,28 @@ public class RunnerController : NetworkBehaviour
     public void GetStucked()
     {
         RunnerLose();
+    }
+
+    [Command(ignoreAuthority = true)]
+    void RunnerWin()
+    {
+        WinCharacterUpdate();
+    }
+
+    [ClientRpc]
+    void WinCharacterUpdate()
+    {
+        IsWon = true;
+        // This bricks the game
+        //gameObject.layer = LayerMask.NameToLayer("ExitedPlayer");
+        Outline.enabled = true;
+        Outline.OutlineColor = WinColor;
+
+        foreach (var renderer in Renderer)
+        {
+            renderer.material = TransparentMaterial;
+            renderer.material.shader = TransparentShader;
+        }
     }
 
     [Command(ignoreAuthority = true)]
@@ -65,18 +80,12 @@ public class RunnerController : NetworkBehaviour
     void OutlineCharacter()
     {
         Outline.enabled = true;
+        Outline.OutlineColor = LoseColor;
 
         foreach (var renderer in Renderer)
         {
+            renderer.material = TransparentMaterial;
             renderer.material.shader = TransparentShader;
         }
-    }
-
-    
-
-    [Command]
-    void RunnerWin()
-    {
-        Debug.Log(isServer);
     }
 }
