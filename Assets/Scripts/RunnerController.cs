@@ -11,6 +11,11 @@ public class RunnerController : NetworkBehaviour
     private bool IsWon = false;
     public List<Material> Materials;
 
+    private void Start()
+    {
+        // so we can disable this component
+    }
+
     public void ColorizeSelf(int index)
     {
         foreach (var renderer in Renderer)
