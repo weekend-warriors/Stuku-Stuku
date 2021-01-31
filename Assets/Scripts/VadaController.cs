@@ -53,14 +53,17 @@ public class VadaController : NetworkBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (!isBlind && other.CompareTag("DropPoint")) 
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            for(int i = TaggedRunners.Count-1; i >= 0; i--)
+            if (!isBlind && other.CompareTag("DropPoint")) 
             {
-                TaggedRunners[i].GetComponent<RunnerController>().GetStucked();
-                TaggedRunners.RemoveAt(i);
+                for(int i = TaggedRunners.Count-1; i >= 0; i--)
+                {
+                    TaggedRunners[i].GetComponent<RunnerController>().GetStucked();
+                    TaggedRunners.RemoveAt(i);
+                }
             }
         }
     }
