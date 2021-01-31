@@ -5058,7 +5058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  Outline: {fileID: 0}
+  Outline: {fileID: 8618143504540392459}
   Renderer:
   - {fileID: 7231571983551282050}
   - {fileID: 6350736744306576540}

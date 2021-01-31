@@ -26,7 +26,7 @@ public class RunnerController : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (IsWon)
+        if (IsWon || !enabled)
         {
             return;
         }
