@@ -46,7 +46,7 @@ public class BuildScript
     public static void BuildWindowsClient()
     {
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-        buildPlayerOptions.scenes = new[] { "Assets/Scenes/Main.unity" };
+        buildPlayerOptions.scenes = new[] { "Assets/Scenes/Pixelation-2.unity" };
         buildPlayerOptions.locationPathName = "Builds/Windows/Client/Client.exe";
         buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
         buildPlayerOptions.options = BuildOptions.CompressWithLz4HC;

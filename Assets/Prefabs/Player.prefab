@@ -5070,9 +5070,9 @@ MonoBehaviour:
   TransparentMaterial: {fileID: 2100000, guid: d7fd2f244b66e914c8d1344f99b01a11, type: 2}
   TransparentShader: {fileID: 4800000, guid: c6675dd998d61c34b9a5d533a73105a1, type: 3}
   Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0f0ed1dbe5df65a49be4259823df1e23, type: 2}
+  - {fileID: 2100000, guid: aa63f3e6a316ded4b878d23b290921ae, type: 2}
+  - {fileID: 2100000, guid: 4ca968d4a6c704440941678c82b6bc2d, type: 2}
   - {fileID: 2100000, guid: d663b1505f4d34e4191bfd7112c70bdf, type: 2}
   LoseColor: {r: 0.9245283, g: 0.20496617, b: 0.23150809, a: 1}
   WinColor: {r: 0.2494215, g: 0.8962264, b: 0.2494215, a: 1}
