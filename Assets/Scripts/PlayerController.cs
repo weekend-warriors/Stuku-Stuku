@@ -25,6 +25,7 @@ public class PlayerController : NetworkBehaviour
     private void Update()
     {
         Direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Up = Input.GetKeyDown(KeyCode.Space);
     }
 
     private void FixedUpdate()
@@ -58,8 +59,8 @@ public class PlayerController : NetworkBehaviour
 
         Animator.SetBool("IsWalking", !isStopped);
 
-        var direction = (Vector3.right * Direction.x + Vector3.forward * Direction.y).normalized;
         var gravity = new Vector3(0, RigidBody.velocity.y);
+        var direction = (Vector3.right * Direction.x + Vector3.forward * Direction.y).normalized;
         RigidBody.velocity = gravity + (direction * Speed * Time.fixedDeltaTime);
 
         if (direction.magnitude >= 0.1) {
