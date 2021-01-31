@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour
     private void Update()
     {
         Direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Up = Input.GetKeyDown(KeyCode.Space);
+        //Up = Input.GetKeyDown(KeyCode.Space);
     }
 
     private void FixedUpdate()
@@ -40,6 +40,7 @@ public class PlayerController : NetworkBehaviour
     public void BecomeRunner(int index)
     {
         GetComponent<RunnerController>().enabled = true;
+        GetComponent<RunnerController>().ColorizeSelf(index);
     }
 
     [ClientRpc]
