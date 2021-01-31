@@ -8,6 +8,7 @@ public class PlayerController : NetworkBehaviour
     public float Speed;
     public float RotationSpeed;
     public float GravitySpeed;
+    public ParticleSystem WalkingParticles;
     public Animator Animator;
     private Rigidbody RigidBody;
     private Vector2 Direction;
@@ -50,11 +51,15 @@ public class PlayerController : NetworkBehaviour
 
     void HandleMovement()
     {
+        WalkingParticles.Play();
+
         // TODO: there is a bug here
         var isStopped = Direction.Equals(Vector2.zero);
         if (isStopped)
         {
             RigidBody.velocity = Vector3.zero;
+            //WalkingParticles.Stop();
+            WalkingParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
 
         Animator.SetBool("IsWalking", !isStopped);

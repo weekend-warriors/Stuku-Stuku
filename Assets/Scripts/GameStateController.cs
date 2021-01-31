@@ -8,59 +8,72 @@ public class GameStateController : NetworkBehaviour
 {
     public int ConnectedStartCount;
     public GameObject Title;
+    public GameObject Button;
 
-    [SyncVar(hook = nameof(CheckIfStarted))]
+    //[SyncVar(hook = nameof(CheckIfStarted))]
     private int ConnectedPlayers;
     private bool IsStarted = false;
 
-    private Guid LocalPlayerId;
+    //private Guid LocalPlayerId;
 
-    void LateUpdate()
+    //void LateUpdate()
+    //{
+    //    if (isServer && !IsStarted)
+    //    {
+    //        var readyPlayers = 0;
+
+    //        foreach (var connection in NetworkServer.connections)
+    //        {
+    //            if (connection.Value.isReady)
+    //            {
+    //                readyPlayers++;
+    //            }
+    //        }
+
+    //        ConnectedPlayers = readyPlayers;
+
+    //        if (ConnectedPlayers == ConnectedStartCount)
+    //        {
+
+    //        }
+    //    }
+    //}
+
+    [Command(ignoreAuthority = true)]
+    public void StartServer()
     {
-        if (isServer && !IsStarted)
+        if (IsStarted)
         {
-            var readyPlayers = 0;
+            return;
+        }
 
-            foreach (var connection in NetworkServer.connections)
+        IsStarted = true;
+        var vadaIndex = UnityEngine.Random.Range(0, ConnectedPlayers);
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        var runnerIndex = 0;
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            var controller = players[i].GetComponent<PlayerController>();
+
+            if (i == vadaIndex)
             {
-                if (connection.Value.isReady)
-                {
-                    readyPlayers++;
-                }
+                controller.BecomeVada();
             }
-
-            ConnectedPlayers = readyPlayers;
-
-            if (ConnectedPlayers == ConnectedStartCount)
+            else
             {
-                IsStarted = true;
-                var vadaIndex = UnityEngine.Random.Range(0, ConnectedPlayers);
-                var players = GameObject.FindGameObjectsWithTag("Player");
-                var runnerIndex = 0;
-
-                for (int i = 0; i < players.Length; i++)
-                {
-                    var controller = players[i].GetComponent<PlayerController>();
-
-                    if (i == vadaIndex)
-                    {
-                        controller.BecomeVada();
-                    }
-                    else
-                    {
-                        controller.BecomeRunner(runnerIndex);
-                        runnerIndex++;
-                    }
-                } 
+                controller.BecomeRunner(runnerIndex);
+                runnerIndex++;
             }
         }
+
+        StartClient();
     }
 
-    private void CheckIfStarted(int old, int value)
+    [ClientRpc]
+    private void StartClient()
     {
-        if (value == ConnectedStartCount)
-        {
-            Title.SetActive(false);
-        }
+        Title.SetActive(false);
+        Button.SetActive(false);
     }
 }
